@@ -19,12 +19,19 @@ module.exports = {
             },
             exclude:/node_modules/
         },{
-                test: /\.css$/,
+                test: /(\.scss|\.css)$/,
                 use: [
                     {
                         loader: "style-loader"
                     }, {
-                        loader: "css-loader"
+                        loader: "css-loader",
+                        options:{
+                            modules:true,
+                            localIdentName: '[name]__[local]--[hash:base64:5]'
+                        }
+                    },
+                    {
+                        loader: "sass-loader"
                     }
                 ]
             }
